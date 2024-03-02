@@ -48,6 +48,23 @@ app.get("/books", async (req, res) => {
     res.status(500).send(err.message);
   }
 });
+
+// >> Get Single Book
+app.get("/books/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const book = await Book.findById(id);
+    // console.log(book);
+
+    res.status(200).json({
+      success: true,
+      book,
+    });
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
 // >>Home Route
 app.get("/", (req, res) => {
   return res.status(234).send("First MERN project after 7 months");
