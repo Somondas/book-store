@@ -4,7 +4,7 @@ const Book = require("../models/bookModel");
 const router = express.Router();
 
 // >> Route to save a new Book
-router.post("/books", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     if (!req.body.title || !req.body.author || !req.body.publishYear) {
       return res.status(400).send({
@@ -29,7 +29,7 @@ router.post("/books", async (req, res) => {
   }
 });
 // >> Route to get all the Books from the database
-router.get("/books", async (req, res) => {
+router.get("", async (req, res) => {
   try {
     const books = await Book.find({});
 
@@ -44,7 +44,7 @@ router.get("/books", async (req, res) => {
 });
 
 // >> Get Single Book
-router.get("/books/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     console.log(id);
@@ -60,7 +60,7 @@ router.get("/books/:id", async (req, res) => {
   }
 });
 // >> Update Single book data
-router.put("/books/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     if (!req.body.title || !req.body.author || !req.body.publishYear) {
       return res.status(400).send({
@@ -83,7 +83,7 @@ router.put("/books/:id", async (req, res) => {
   }
 });
 // >> Delete a Book data
-router.delete("/books/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const deleteBook = await Book.findByIdAndDelete(id);
