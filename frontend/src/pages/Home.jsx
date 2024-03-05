@@ -69,15 +69,17 @@ const Home = () => {
                   {book.publishYear}
                 </td>
                 <td className="border border-slate-700 rounded-md text-center ">
-                  <Link to={`/book/details/${book._id}`}>
-                    <BsInfoCircle className="text-2xl text-green-500" />
-                  </Link>
-                  <Link to={`/book/edit/${book._id}`}>
-                    <AiOutlineEdit className="text-2xl text-yellow-500" />
-                  </Link>
-                  <Link to={`/book/delete/${book._id}`}>
-                    <MdOutlineDelete className="text-2xl text-red-500" />
-                  </Link>
+                  <div className="flex justify-center gap-x-4">
+                    <Link to={`/book/details/${book._id}`}>
+                      <BsInfoCircle className="text-2xl text-green-500" />
+                    </Link>
+                    <Link to={`/book/edit/${book._id}`}>
+                      <AiOutlineEdit className="text-2xl text-yellow-500" />
+                    </Link>
+                    <Link to={`/book/delete/${book._id}`}>
+                      <MdOutlineDelete className="text-2xl text-red-500" />
+                    </Link>
+                  </div>
                 </td>
               </tr>
             ))}
