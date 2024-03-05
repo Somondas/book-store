@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
   }
 });
 // >> Route to get all the Books from the database
-router.get("", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const books = await Book.find({});
 
