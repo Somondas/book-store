@@ -1,11 +1,11 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 
 const ShowBook = () => {
-  const [book, setBooks] = useEffect(false);
+  const [book, setBook] = useState(false);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   // axios
@@ -23,12 +23,12 @@ const ShowBook = () => {
     setLoading(true);
     axios
       .get(`http://localhost:8000/books/${id}`)
-      .then((res) => {
-        setBooks(res.book);
+      .then((response) => {
+        setBook(response.data.book);
         setLoading(false);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
         setLoading(false);
       });
   }, []);
